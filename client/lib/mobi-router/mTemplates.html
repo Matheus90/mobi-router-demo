@@ -1,0 +1,77 @@
+
+<template name="mobi_router">
+    <div id="mobi_router_background">
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+
+        <div id="mobi_background"></div>
+        <div id="mobi_router">
+
+            {{>mobi_sidebar}}
+
+            <div id="mobi_main">
+                {{>mobi_contentTop}}
+                {{>mobi_content}}
+            </div>
+
+        </div>
+    </div>
+</template>
+
+
+<template name="mobi_contentTop">
+    <div id="mobi_contentTop">
+        <div id="mobi_sidebar_toggle" class="unselectable"><i class="fa fa-bars"></i></div>
+        {{#isolate}}
+        {{{backBtn}}}
+        {{/isolate}}
+
+        {{#isolate}}
+        {{{pageTitle}}}
+        {{/isolate}}
+
+        {{#isolate}}
+        {{{nextBtn}}}
+        {{/isolate}}
+    </div>
+</template>
+
+
+<template name="mobi_sidebar" class="scrollable" >
+    {{#if MobiRouter.settings.sidebar}}
+    <div id="mobi_sidebar" class="scrollable">
+        {{#isolate}}
+        {{{sidebar}}}
+        {{/isolate}}
+    </div>
+    {{/if}}
+</template>
+
+
+<template name="mobi_content">
+    <div id="mobi_content">
+        {{#if isSequence}}
+            <div id="sequence_slider_wrapper">
+            {{>sliding_page_wrapper}}
+            </div>
+        {{else}}
+            <div id="mobi_page" class="scrollable mobi_page">
+                <div class="scroller">
+                    {{#isolate}}
+                    {{{content}}}
+                    {{/isolate}}
+                </div>
+            </div>
+        {{/if}}
+    </div>
+</template>
+
+
+<template name="sliding_page_wrapper">
+    {{#each slides}}
+        <div id="mobi_page" class="scrollable mobi_page">
+            <div class="scroller">
+            {{{renderSlide this}}}
+            </div>
+        </div>
+    {{/each}}
+</template>

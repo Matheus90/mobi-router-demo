@@ -8,8 +8,8 @@ Resizeable = Class.extend({
 		});
 	},
 	resizeAllElements: function() {
-		var width = $(window).width(), 
-			height = $(window).height();
+		var width = window.innerWidth,
+			height = window.innerHeight;
 
 		for (var resizeFunc in this.elements) {
 			this.elements[resizeFunc].call(this, width, height);
@@ -17,21 +17,22 @@ Resizeable = Class.extend({
 	},
 	elements: {
 		resizeMobiRouter: function(width, height) {
-            MobiRouter.calculateSizes(width, height);
+            this.sizes = MobiRouter.calculateSizes(width, height);
             //alert(MobiRouter.sizes.router.width+'px, '+MobiRouter.sizes.router.height+'px');
+
+			if(isMobile) {
+                $('body').html(document.getElementById('mobi_router_background'));
+                document.getElementsByTagName('body')[0].className += document.getElementsByTagName('body')[0].className.indexOf('mobile-site') == -1 ? ' mobile-site' : '';
+            } else {
+                var bodyClass = document.getElementsByTagName('body')[0].className;
+                document.getElementsByTagName('body')[0].className = bodyClass ? bodyClass.replace(' mobile-site', '') : bodyClass;
+			}
 
             document.getElementById('mobi_router').style.width = MobiRouter.sizes.router.width+"px";
             document.getElementById('mobi_router').style.height = MobiRouter.sizes.router.height+"px";
             document.getElementById('mobi_router').style.top = 0+"px";
             document.getElementById('mobi_router').style.left = 0+"px";
             document.getElementById('mobi_router').style.margin = 0+"px";
-
-			if(isMobile) {
-                document.getElementsByTagName('body')[0].className += document.getElementsByTagName('body')[0].className.indexOf('mobile-site') == -1 ? ' mobile-site' : '';
-            } else {
-                var bodyClass = document.getElementsByTagName('body')[0].className;
-                document.getElementsByTagName('body')[0].className = bodyClass ? bodyClass.replace('mobile-site', '') : bodyClass;
-			}
             //alert('resizeMobiRouter');
         },
 		resizeHeader: function() {
@@ -50,7 +51,7 @@ Resizeable = Class.extend({
         },
         resizeMobiMain: function(width, height) {
             if( MobiRouter.sidebarShown ){
-                $('#mobi_main').hardwareAnimate({translateX: MobiRouter.sizes.sidebar.width-MobiRouter.mainTranslateX}, 5);
+                $('#mobi_main').hardwareAnimate({translateX: MobiRouter.sizes.sidebar.width-MobiRouter.mainTranslateX}, 0);
                 MobiRouter.mainTranslateX = MobiRouter.sizes.sidebar.width;
             }
             document.getElementById('mobi_main').style.width = MobiRouter.sizes.main.width+"px";
@@ -58,10 +59,20 @@ Resizeable = Class.extend({
         },
         resizeMobiContent: function(width, height) {
             document.getElementById('mobi_content').style.height = MobiRouter.sizes.content.height+"px";
+            document.getElementById('mobi_content').style.width = MobiRouter.sizes.main.width+"px";
+            //console.log(document.getElementsByClassName('mobi_page'));
+            _.each(document.getElementsByClassName('mobi_page'), function(page){
+                page.style.width = MobiRouter.sizes.main.width+"px";
+            });
             //alert('resizeMobiContent');
         },
         resizeSliderWrapper: function(){
 
+        },
+        resizeScrolls: function(){
+            MobiRouter.refreshSidebarScroll();
+            MobiRouter.initScrolls();
+            refreshIscrolls();
         },
 		/*resizeMobilePages: function(width, height, header, footer) {
 			$('.mobile_pages').css('width', $('#mobile_container').width());

@@ -1,4 +1,4 @@
 
-Template.page_home.helpers({
+Template.home.helpers({
     //first: function(){ return Session.get('first'); },
 });

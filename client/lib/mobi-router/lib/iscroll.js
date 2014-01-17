@@ -1183,10 +1183,10 @@ refreshIscrolls = function(){
 iScrollElements = {};
 setupIscroll = function(templateInstance) {
 	var page = templateInstance.find('.scrollable'),
-		id = $(page).attr('id');
+        id = page.id;
 	
 	if(iScrollElements[id] == undefined) iScrollElements[id] = vScroll(id);
-	
+
 	return iScrollElements[id].refresh();
 };
 

@@ -54,6 +54,6 @@ MobiRouter.configure({
         tablet: true,
         phone: false
     },
-    sidebarDefaultWidth: 350,
+    sidebarDefaultWidth: 200,
     sidebarTemplate: 'sidebar',
 });

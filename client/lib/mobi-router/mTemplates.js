@@ -16,6 +16,10 @@ Template.mobi_sidebar.events({
     }
 });
 
+Template.mobi_sidebar.rendered = function(){
+    MobiRouter.refreshSidebarScroll();
+};
+
 
 
 /** mobi_content HELPERS, EVENTS & CALLBACKS **/
@@ -25,9 +29,10 @@ Template.mobi_content.helpers({
 });
 
 Template.mobi_content.rendered = function(){
-    console.log('mobi_content rendered');
-    clearScrolls();
-    initializeScrolls = _.once(applyAllScrolls);
+    console.log('Mobi-Router: "mobi_content" template rendered');
+    Meteor.setTimeout(function(){
+        MobiRouter.initScrolls();
+    }, 100);
 };
 
 
