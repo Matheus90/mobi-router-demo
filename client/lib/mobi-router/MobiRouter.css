@@ -14,6 +14,7 @@ body.mobile-site {
     padding: 0 !important;
     margin: 0 !important;
 }
+
 #mobi_background {
     display: none;
     position: relative;
@@ -43,7 +44,7 @@ body.mobile-site #mobi_background {
     border: 0;
     padding: 0;
     margin: 0;
-    background-color: deepskyblue;
+    background: black;
     overflow: hidden;
     width: 1024px;
     height: 640px;
@@ -56,42 +57,48 @@ body.mobile-site #mobi_background {
 }
 
 #mobi_sidebar {
+    background: rgb(110,110,110);
     position: relative;
     width: 200px;
     height: 100%;
     padding-right: 5px;
-    background: DimGrey;
     overflow: hidden;
 }
 
-#mobi_contentTop {
+
+#mobi_header {
     position: relative;
     height: 45px;
     width: 100%;
-    border-bottom: 1px solid grey;
     overflow: hidden;
-
+    background: #3bb9ff; /* Old browsers */
+    background: -moz-linear-gradient(top,  #3bb9ff 0%, #23709a 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#3bb9ff), color-stop(100%,#23709a)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  #3bb9ff 0%,#23709a 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  #3bb9ff 0%,#23709a 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  #3bb9ff 0%,#23709a 100%); /* IE10+ */
+    background: linear-gradient(to bottom,  #3bb9ff 0%,#23709a 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3bb9ff', endColorstr='#23709a',GradientType=0 ); /* IE6-9 */
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.6);
+    -moz-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.6);
+    -webkit-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.6);
+    z-index: 13;
 }
 #mobi_content {
     position: relative;
     overflow: hidden;
+    z-index: 12;
 }
 
 #mobi_sidebar_toggle {
+    color: white;
+    text-shadow: -1px -1px 0px #444;
     height: 45px;
     width: 45px;
-    line-height: 45px;
+    line-height: 50px;
     text-align: center !important;
     cursor: pointer;
-    /*border-right: 1px solid grey;*/
 }
-
-/*
-#mobi_sidebar_toggle:hover,
-#mobi_sidebar_toggle:active {
-    background: rgba(0,0,0,0.1);
-    cursor: pointer;
-}*/
 
 #mobi_main {
     overflow: hidden;
@@ -102,10 +109,13 @@ body.mobile-site #mobi_background {
     width: 840px;
     max-width: 100%;
     height: 100%;
-    border-radius: 5px;
-    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.6);
-    -moz-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.6);
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    border-radius: 6px;
     -webkit-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.6);
+    -moz-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.6);
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.6);
+    z-index: 10;
     /*-webkit-transition-duration: 0.3s;*/
 }
 
@@ -113,20 +123,26 @@ body.mobile-site #mobi_background {
 
 }
 
+.mobi_page {
+    margin: 0px;
+    padding: 0px;
+    height: 100%;
+    width: 100%;
+}
+
 .mobi_page > * {
     overflow: hidden;
-    padding: 10px;
 }
 
 .scrollable {
     height: 100%;
-    padding: 0;
     overflow: hidden;
     position:absolute
 }
 
 .scroller {
     overflow: hidden;
+    min-height: 100%;
 }
 
 #mobi_sidebar > * {

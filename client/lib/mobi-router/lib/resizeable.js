@@ -36,7 +36,7 @@ Resizeable = Class.extend({
             //alert('resizeMobiRouter');
         },
 		resizeHeader: function() {
-            document.getElementById('mobi_contentTop').style.height = MobiRouter.settings.headerHeight+"px";
+            document.getElementById('mobi_header').style.height = MobiRouter.settings.headerHeight+"px";
             //alert('resizeHeader');
         },
 		resizeMobileContainer: function(width, height) {
@@ -61,18 +61,17 @@ Resizeable = Class.extend({
             document.getElementById('mobi_content').style.height = MobiRouter.sizes.content.height+"px";
             document.getElementById('mobi_content').style.width = MobiRouter.sizes.main.width+"px";
             //console.log(document.getElementsByClassName('mobi_page'));
-            _.each(document.getElementsByClassName('mobi_page'), function(page){
-                page.style.width = MobiRouter.sizes.main.width+"px";
-            });
+            /*_.each(document.getElementsByClassName('mobi_page'), function(page){
+                page.style.width = (MobiRouter.sizes.content.width - 10) +"px";
+                page.style.height = (MobiRouter.sizes.content.height - 10) +"px";
+            });*/
             //alert('resizeMobiContent');
         },
         resizeSliderWrapper: function(){
 
         },
         resizeScrolls: function(){
-            MobiRouter.refreshSidebarScroll();
-            MobiRouter.initScrolls();
-            refreshIscrolls();
+            Meteor.setTimeout(function(){ MobiRouter.initScrolls(); }, 300);
         },
 		/*resizeMobilePages: function(width, height, header, footer) {
 			$('.mobile_pages').css('width', $('#mobile_container').width());

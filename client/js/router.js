@@ -48,12 +48,7 @@ MobiRouter.configure({
     desktopHeight: 480,
     headerHeight: 45,
     sidebarToggleBtn: 45,
-    sidebar: true,
-    sidebarAutoOpen: {
-        desktop: true,
-        tablet: true,
-        phone: false
-    },
-    sidebarDefaultWidth: 350,
+    sidebarAutoOpenDesktop: true,
+    sidebarDefaultWidth: 300,
     sidebarTemplate: 'sidebar',
 });

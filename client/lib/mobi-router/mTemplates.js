@@ -37,14 +37,14 @@ Template.mobi_content.rendered = function(){
 
 
 
-/** mobi_contentTop HELPERS, EVENTS & CALLBACKS **/
+/** mobi_header HELPERS, EVENTS & CALLBACKS **/
 
-Template.mobi_contentTop.helpers({
-    'content': function(){ return MobiRouter.contentTop(); },
+Template.mobi_header.helpers({
+    'content': function(){ return MobiRouter.header(); },
 });
 
 touchEventStarted = 0;
-Template.mobi_contentTop.events({
+Template.mobi_header.events({
     'mousedown #mobi_sidebar_toggle, touchstart #mobi_sidebar_toggle': function(e){
         touchEventStarted = e.type == 'touchstart' ? +(new Date) : 0;
 

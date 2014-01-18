@@ -8,11 +8,7 @@ MRouter = function(){
         headerHeight: 45,
         sidebarToggleBtn: 45,
         sidebar: true,
-        sidebarAutoOpen: {
-            desktop: true,
-            tablet: true,
-            phone: false
-        },
+        sidebarAutoOpenDesktop: true,
         sidebarDefaultWidth: 200,
         sidebarTemplate: 'sidebar',
     };
@@ -98,27 +94,29 @@ MRouter = function(){
         routePoints = _.reject(routePoints, function(rp){ return rp.point === false });
 
         return _.max(routePoints, function(rp){ return rp.point});
-    }
+    };
 
     // Opens landing page on site open
     function _goOpenedPage(){
         var landingPage = _findByPath();
         this.go(landingPage.name);
-    }
+
+        if( !isMobile && this.settings.sidebarAutoOpenDesktop )
+            this.showSidebar(document.getElementById('mobi_sidebar_toggle'));
+    };
 
     // Set targeted menu item to active
-    function _setMenuItemActive(params){
-        if( params == undefined || params.eTarget == undefined ) return params;
-
-        var target = params.eTarget;
-        delete params.eTarget;
+    function _setMenuItemActive(name){
+        if( !name || name == undefined ) return name;
 
         _.each(document.getElementsByClassName('active_sidebar_item'), function(item){
-            item.className = item.className.replace('active_sidebar_item', '');
+            item.className = item.className.replace(' active_sidebar_item', '');
         });
-        target.className += ' active_sidebar_item';
+        _.each(document.getElementsByClassName('menu_item_'+name), function(item){
+            item.className += ' active_sidebar_item';
+        });
 
-        return params;
+        return name;
     };
 
 
@@ -183,17 +181,17 @@ MRouter = function(){
      */
     this.calculateSizes = function(width, height){
         var settings = this.settings;
-
         this.showFullScreen = isMobile || Boolean(settings.desktopWidth > width || settings.desktopHeight > height);
-        if( isMobile ){
-            this.sizes.router.width = width;
-            this.sizes.router.height = this.sizes.sidebar.height = this.sizes.main.height = height;
-        }else{
-            this.sizes.router.width = this.showFullScreen ? width : settings.desktopWidth;
-            this.sizes.router.height = this.sizes.main.height = this.sizes.sidebar.height = this.showFullScreen ? height : settings.desktopHeight;
-        }
+
+        this.sizes.router.width = isMobile || this.showFullScreen ? width : settings.desktopWidth;
         this.sizes.sidebar.width = settings.sidebarDefaultWidth > (width - this.settings.sidebarToggleBtn) ? (width - settings.sidebarToggleBtn) : settings.sidebarDefaultWidth;
-        this.sizes.main.width = ( this.sidebarShown && (this.sizes.sidebar.width && (this.sizes.router.width / this.sizes.sidebar.width < 2.5)) ) ? this.sizes.router.width - this.sizes.sidebar.width : this.sizes.router.width;
+
+        if( isMobile ) this.sizes.router.height = this.sizes.sidebar.height = this.sizes.main.height = height;
+        else this.sizes.router.height = this.sizes.main.height = this.sizes.sidebar.height = this.showFullScreen ? height : settings.desktopHeight;
+
+        if(this.sizes.sidebar.width && (this.sizes.router.width / this.sizes.sidebar.width < 2.2)) this.sizes.main.width = this.sizes.router.width;
+        else this.sizes.main.width = this.sidebarShown ? this.sizes.router.width - this.sizes.sidebar.width : this.sizes.router.width;
+
         this.sizes.header.height = settings.headerHeight;
         this.sizes.header.width = this.sizes.main.width;
         this.sizes.content.width = this.sizes.main.width;
@@ -235,11 +233,12 @@ MRouter = function(){
         if( !route )
             throw new Error('This route does not exists.');
 
-        _setMenuItemActive(params);
+        _setMenuItemActive(routeName);
 
         window.history.pushState("", "MobiRouter", route.getPath(params));
         Session.set('actual_data', route.getData(params));
         Session.set('actual_page', routeName);
+        Meteor.setTimeout(function(){ MobiRouter.initScrolls(); }, 300);
     };
 
 
@@ -296,8 +295,8 @@ MRouter = function(){
     };
 
     // Rendering actual content
-    this.contentTop = function(){
-        return Template.mobi_contentTop();
+    this.header = function(){
+        return Template.mobi_header();
     };
 
     // Rendering sidebar
@@ -315,12 +314,11 @@ MRouter = function(){
         var _this = this;
 
         $('#mobi_main').hardwareAnimate({translateX: this.sizes.sidebar.width}, 300, 'easeOutExpo', function(){}, function(){
-            e.target.focus();
-            if( _this.sizes.sidebar.width && (_this.sizes.router.width/_this.sizes.sidebar.width > 2.5) ) $('#mobi_main').animate({width: _this.sizes.main.width - _this.sizes.sidebar.width}, 150, 'easeInExpo', function(){
+            if( _this.sizes.sidebar.width && _this.sizes.router.width/_this.sizes.sidebar.width > 2.2 ) $('#mobi_main').animate({width: _this.sizes.router.width - _this.sizes.sidebar.width}, 150, 'easeInExpo', function(){
                 refreshIscrolls();
             });
+            _this.mainTranslateX += _this.sizes.sidebar.width;
         });
-        this.mainTranslateX += this.sizes.sidebar.width;
         this.sidebarShown = true;
     };
 
@@ -330,12 +328,11 @@ MRouter = function(){
         var _this = this;
 
         $('#mobi_main').hardwareAnimate({translateX: -this.sizes.sidebar.width}, 300, 'easeOutExpo', function(){}, function(){
-            e.target.focus();
-            if( _this.sizes.sidebar.width && _this.sizes.router.width/_this.sizes.sidebar.width > 2.5 ) $('#mobi_main').animate({width: _this.sizes.main.width + _this.sizes.sidebar.width}, 300, 'easeOutExpo', function(){
+            if( _this.sizes.sidebar.width && _this.sizes.router.width/_this.sizes.sidebar.width > 2.2 ) $('#mobi_main').animate({width: _this.sizes.main.width + _this.sizes.sidebar.width}, 300, 'easeOutExpo', function(){
                 refreshIscrolls();
             });
+            _this.mainTranslateX += -_this.sizes.sidebar.width;
         });
-        this.mainTranslateX += -this.sizes.sidebar.width;
         this.sidebarShown = false;
     };
 
@@ -384,7 +381,6 @@ Function.prototype.duplicate = function() {
     return temp;
 };
 
-
 applyAllScrolls = function() {
     console.log('Mobi-Router: apply all scrolls');
     var templates = ['mobi_sidebar', 'mobi_content'];  //_.pluck(MobiRouter.getMap(), 'template');
@@ -406,3 +402,7 @@ applyAllScrolls = function() {
 };
 
 initializeScrolls = _.once(applyAllScrolls);
+
+$(document).ready(function(){
+   MobiRouter.initScrolls();
+});

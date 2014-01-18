@@ -9,7 +9,7 @@
             {{>mobi_sidebar}}
 
             <div id="mobi_main">
-                {{>mobi_contentTop}}
+                {{>mobi_header}}
                 {{>mobi_content}}
             </div>
 
@@ -18,9 +18,9 @@
 </template>
 
 
-<template name="mobi_contentTop">
-    <div id="mobi_contentTop">
-        <div id="mobi_sidebar_toggle" class="unselectable"><i class="fa fa-bars"></i></div>
+<template name="mobi_header">
+    <div id="mobi_header" class="unselectable">
+        <div id="mobi_sidebar_toggle" class="unselectable"><i class="fa fa-bars fa-2x"></i></div>
         {{#isolate}}
         {{{backBtn}}}
         {{/isolate}}
@@ -38,10 +38,12 @@
 
 <template name="mobi_sidebar" class="scrollable" >
     {{#if MobiRouter.settings.sidebar}}
-    <div id="mobi_sidebar" class="scrollable">
+    <div id="mobi_sidebar" class="scrollable unselectable">
+        <div class="scroller">
         {{#isolate}}
         {{{sidebar}}}
         {{/isolate}}
+        </div>
     </div>
     {{/if}}
 </template>
