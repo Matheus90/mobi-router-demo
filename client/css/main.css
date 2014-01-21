@@ -1,22 +1,67 @@
 /* CSS declarations go here */
 
 body {
-    font-size: 12px;
+    font-size: 14px;
     font-family: Arial, Helvetica, sans-serif;
     background: #555555;
 }
 
 #page {
-    width:  840px;
-    height: 480px;
-    padding: 50px 70px;
-    background: black;
-    border-radius: 16px;
+    position: relative;
+    width: 1000px;
+    height: 676px;
+    padding: 33px 95px;
+    background: white;
+    -webkit-border-radius: 50px;
+    -moz-border-radius: 50px;
+    border-radius: 50px;
     margin: 40px auto;
     border: 4px outset silver;
-    box-shadow: 5px 5px 20px 2px black;
-    -moz-box-shadow: 5px 5px 20px 2px black;
-    -webkit-box-shadow: 5px 5px 20px 2px black;
+    box-shadow: 5px 5px 20px 0px black, 0px 0px 1px -1px rgba(0,0,0,0.8) inset, 0px 0px 8px 0px rgba(0,0,0,0.3) inset;
+    -moz-box-shadow: 5px 5px 20px 0px black, 0px 0px 1px -1px rgba(0,0,0,0.8) inset, 0px 0px 8px 0px rgba(0,0,0,0.3) inset;
+    -webkit-box-shadow: 5px 5px 20px 0px black, 0px 0px 1px -1px rgba(0,0,0,0.8) inset, 0px 0px 8px 0px rgba(0,0,0,0.3) inset;
+}
+
+#mobi_router_background {
+    border: 1px inset silver;
+    -webkit-border-radius: 7px;
+    -moz-border-radius: 7px;
+    border-radius: 7px;
+    overflow: hidden;
+}
+
+#ipad_cam {
+    position: absolute;
+    top: 327px;
+    left: 46px;
+    width: 12px;
+    height: 12px;
+    -webkit-border-radius: 7px;
+    -moz-border-radius: 7px;
+    border-radius: 7px;
+    border: 1px solid DimGrey;
+    background: black;
+    -webkit-box-shadow: 0px 0px 5px 0px rgba(255,255,255,0.7) inset;
+    -moz-box-shadow: 0px 0px 5px 0px rgba(255,255,255,0.7) inset;
+    box-shadow: 0px 0px 5px 0px rgba(255,255,255,0.7) inset;
+}
+
+#ipad_button {
+    position: absolute;
+    color: rgb(170, 170, 170);
+    text-align: center;
+    line-height: 59px;
+    top: 310px;
+    right: 22px;
+    width: 50px;
+    height: 50px;
+    border: 1px solid LightGrey;
+    -webkit-border-radius: 26px;
+    -moz-border-radius: 26px;
+    border-radius: 26px;
+    -webkit-box-shadow: 5px 5px 10px 5px rgba(0,0,0,0.05) inset;
+    -moz-box-shadow: 5px 5px 10px 5px rgba(0,0,0,0.05) inset;
+    box-shadow: 5px 5px 10px 5px rgba(0,0,0,0.05) inset;
 }
 
 

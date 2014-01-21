@@ -58,13 +58,18 @@ Resizeable = Class.extend({
             //alert('resizeMobiMain');
         },
         resizeMobiContent: function(width, height) {
-            document.getElementById('mobi_content').style.height = MobiRouter.sizes.content.height+"px";
-            document.getElementById('mobi_content').style.width = MobiRouter.sizes.main.width+"px";
+            if( MobiRouter.isSequence() && document.getElementById('sequence_scroller') ){
+                document.getElementById('sequence_slider_wrapper').style.height = MobiRouter.sizes.content.height+"px";
+                console.log(MobiRouter.getSlideStackSize() * document.getElementById('sequence_slider_wrapper').offsetWidth);
+                document.getElementById('sequence_scroller').style.width = (MobiRouter.getSlideStackSize() * document.getElementById('sequence_slider_wrapper').offsetWidth)+"px";
+            }else
+                document.getElementById('mobi_content').style.height = MobiRouter.sizes.content.height+"px";
+            //document.getElementById('mobi_content').style.width = MobiRouter.sizes.main.width+"px";
             //console.log(document.getElementsByClassName('mobi_page'));
-            /*_.each(document.getElementsByClassName('mobi_page'), function(page){
-                page.style.width = (MobiRouter.sizes.content.width - 10) +"px";
-                page.style.height = (MobiRouter.sizes.content.height - 10) +"px";
-            });*/
+            _.each(document.getElementsByClassName('mobi_page'), function(page){
+                page.style.width = (MobiRouter.sizes.content.width) +"px";
+                page.style.height = (MobiRouter.sizes.content.height) +"px";
+            });
             //alert('resizeMobiContent');
         },
         resizeSliderWrapper: function(){
@@ -72,6 +77,19 @@ Resizeable = Class.extend({
         },
         resizeScrolls: function(){
             Meteor.setTimeout(function(){ MobiRouter.initScrolls(); }, 300);
+        },
+        resizeTitle: function(){
+            var backBtn = window.getComputedStyle(document.getElementById('header_back_btn')),
+                backBtnFullWidth = backBtn ? parseInt(backBtn.width, 10)+parseInt(backBtn.marginLeft, 10)+parseInt(backBtn.marginRight, 10) : 0,
+                doneBtn = window.getComputedStyle(document.getElementById('header_done_btn')),
+                doneBtnFullWidth = doneBtn ? parseInt(doneBtn.width, 10)+parseInt(doneBtn.marginLeft, 10)+parseInt(doneBtn.marginRight, 10) : 0,
+                sbToggle = document.getElementById('mobi_sidebar_toggle').offsetWidth,
+                pageTitle = window.getComputedStyle(document.getElementById('mobi_page_title')),
+                pageTitlePadding = parseInt(pageTitle.paddingLeft, 10)+parseInt(pageTitle.paddingRight, 10),
+                headerWidth = parseInt(window.getComputedStyle(document.getElementById('mobi_header')).width, 10);
+            var fullLoss = backBtnFullWidth + doneBtnFullWidth + sbToggle + pageTitlePadding;
+            //console.log(fullLoss);
+            document.getElementById('mobi_page_title').style.width = (headerWidth - fullLoss)+"px";
         },
 		/*resizeMobilePages: function(width, height, header, footer) {
 			$('.mobile_pages').css('width', $('#mobile_container').width());

@@ -1,0 +1,11 @@
+
+#user_info {
+    font-size: 16px;
+}
+
+#user_info label {
+    display: block;
+    color: cornflowerblue;
+    font-size: 18px;
+    font-weight: bold;
+}

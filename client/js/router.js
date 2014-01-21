@@ -8,47 +8,49 @@ MobiRouter.map({
     },
     'greeting': {
         path: '/greeting/:first/:last',
-        defaultTitle: 'Wellcome </b>{:first} {:last}</b>!',
+        defaultTitle: 'Wellcome </b> {:last} {:first} </b>!',
         template: 'hello',
+        data: function(){ return {first: this.params.first, last: this.params.last}; },
     },
     'posts': {
-        path: '/posts',
+        path: '/posts/posts',
         defaultTitle: 'Posts',
         template: 'posts',
     },
     'userInfo': {
         path: '/userInfo',
-        defaultTitle: 'Please, fill the form!',
+        defaultTitle: 'Posts page with button',
         template: 'posts',
     },
     'about': {
-        path: '/about',
+        path: '/posts/about',
         defaultTitle: 'About',
         template: 'about',
+    },
+    'registration': {
+        path: '/registration',
+        defaultTitle: 'Registration',
+        template: 'user_info'
     }
 });
 
-MobiRouter.addSequence('Test Sequence', [
+MobiRouter.addSequence('signup', [
     {
-        name: 'home',
-        data: {first: 'First Value'}
+        name: 'registration',
+        data: {}
     },
     {
         name: 'userInfo',
         data: {postsNum: 15}
-    },
-    {
-        name: 'greeting',
-        data: {}
     }
 ]);
 
 MobiRouter.configure({
-    desktopWidth: 840,
-    desktopHeight: 480,
+    desktopWidth: 800,
+    desktopHeight: 600,
     headerHeight: 45,
     sidebarToggleBtn: 45,
-    sidebarAutoOpenDesktop: true,
+    /*sidebarAutoOpenDesktop: true,*/
     sidebarDefaultWidth: 300,
     sidebarTemplate: 'sidebar',
 });

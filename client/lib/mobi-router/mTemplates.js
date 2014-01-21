@@ -41,6 +41,7 @@ Template.mobi_content.rendered = function(){
 
 Template.mobi_header.helpers({
     'content': function(){ return MobiRouter.header(); },
+    'pageTitle': function(){ return MobiRouter.getPageTitle(); },
 });
 
 touchEventStarted = 0;
@@ -48,12 +49,17 @@ Template.mobi_header.events({
     'mousedown #mobi_sidebar_toggle, touchstart #mobi_sidebar_toggle': function(e){
         touchEventStarted = e.type == 'touchstart' ? +(new Date) : 0;
 
-
-        if(!MobiRouter.sidebarShown) MobiRouter.showSidebar(e);
-        else MobiRouter.hideSidebar(e);
+        if(!MobiRouter.sidebarShown) MobiRouter.showSidebar();
+        else MobiRouter.hideSidebar();
 
         e.preventDefault();
-    }
+    },
+    'mousedown #header_back_btn, touchstart #header_back_btn': function(e){
+        MobiRouter.prev();
+    },
+    'mousedown #header_done_btn, touchstart #header_done_btn': function(e){
+        MobiRouter.next();
+    },
 });
 
 
@@ -63,7 +69,7 @@ Template.mobi_header.events({
 Template.sliding_page_wrapper.helpers({
     slides: function() {
         clearScrolls(); //iScrolls need to be cleared cuz dead elements with the same IDs will be controlled by old iScroll calls
-        return getSlideGroupTemplates(Session.get('step_type'));
+        return MobiRouter.getSlideStack(); //getSlideGroupTemplates(Session.get('step_type'));
     },
     renderSlide: function(slide) {
         return Template[slide]();

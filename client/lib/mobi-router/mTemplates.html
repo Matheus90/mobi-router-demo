@@ -22,22 +22,27 @@
     <div id="mobi_header" class="unselectable">
         <div id="mobi_sidebar_toggle" class="unselectable"><i class="fa fa-bars fa-2x"></i></div>
         {{#isolate}}
-        {{{backBtn}}}
+        {{#if MobiRouter.hasBackBtn}}
+            <div id="header_back_btn" class="header_btn">{{{MobiRouter.backBtn}}}</div>
+        {{/if}}
         {{/isolate}}
 
+        <div id="mobi_page_title">
         {{#isolate}}
         {{{pageTitle}}}
         {{/isolate}}
+        </div>
 
         {{#isolate}}
-        {{{nextBtn}}}
+        {{#if MobiRouter.hasDoneBtn}}
+            <div id="header_done_btn" class="header_btn">{{{MobiRouter.doneBtn}}}</div>
+        {{/if}}
         {{/isolate}}
     </div>
 </template>
 
 
 <template name="mobi_sidebar" class="scrollable" >
-    {{#if MobiRouter.settings.sidebar}}
     <div id="mobi_sidebar" class="scrollable unselectable">
         <div class="scroller">
         {{#isolate}}
@@ -45,7 +50,6 @@
         {{/isolate}}
         </div>
     </div>
-    {{/if}}
 </template>
 
 
@@ -53,7 +57,9 @@
     <div id="mobi_content">
         {{#if isSequence}}
             <div id="sequence_slider_wrapper">
-            {{>sliding_page_wrapper}}
+                <div id="sequence_scroller" class="scroller">
+                {{>sliding_page_wrapper}}
+                </div>
             </div>
         {{else}}
             <div id="mobi_page" class="scrollable mobi_page">
@@ -70,7 +76,7 @@
 
 <template name="sliding_page_wrapper">
     {{#each slides}}
-        <div id="mobi_page" class="scrollable mobi_page">
+        <div class="scrollable mobi_page">
             <div class="scroller">
             {{{renderSlide this}}}
             </div>
