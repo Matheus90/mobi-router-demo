@@ -17,8 +17,8 @@ MobiRouter.map({
         defaultTitle: 'Posts',
         template: 'posts',
     },
-    'userInfo': {
-        path: '/userInfo',
+    'postsInfo': {
+        path: '/postsInfo',
         defaultTitle: 'Posts page with button',
         template: 'posts',
     },
@@ -36,11 +36,15 @@ MobiRouter.map({
 
 MobiRouter.addSequence('signup', [
     {
-        name: 'registration',
-        data: {}
+        name: 'home',
+        data: function(){ return {first: this.params.first, second: this.params.second}; },
     },
     {
-        name: 'userInfo',
+        name: 'registration',
+        data: function(){ return {testing: Session.get('test')}; },
+    },
+    {
+        name: 'postsInfo',
         data: {postsNum: 15}
     }
 ]);

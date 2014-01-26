@@ -60,7 +60,7 @@ Resizeable = Class.extend({
         resizeMobiContent: function(width, height) {
             if( MobiRouter.isSequence() && document.getElementById('sequence_scroller') ){
                 document.getElementById('sequence_slider_wrapper').style.height = MobiRouter.sizes.content.height+"px";
-                console.log(MobiRouter.getSlideStackSize() * document.getElementById('sequence_slider_wrapper').offsetWidth);
+                //console.log(MobiRouter.getSlideStackSize() * document.getElementById('sequence_slider_wrapper').offsetWidth);
                 document.getElementById('sequence_scroller').style.width = (MobiRouter.getSlideStackSize() * document.getElementById('sequence_slider_wrapper').offsetWidth)+"px";
             }else
                 document.getElementById('mobi_content').style.height = MobiRouter.sizes.content.height+"px";
@@ -75,9 +75,6 @@ Resizeable = Class.extend({
         resizeSliderWrapper: function(){
 
         },
-        resizeScrolls: function(){
-            Meteor.setTimeout(function(){ MobiRouter.initScrolls(); }, 300);
-        },
         resizeTitle: function(){
             var backBtn = window.getComputedStyle(document.getElementById('header_back_btn')),
                 backBtnFullWidth = backBtn ? parseInt(backBtn.width, 10)+parseInt(backBtn.marginLeft, 10)+parseInt(backBtn.marginRight, 10) : 0,
@@ -90,6 +87,9 @@ Resizeable = Class.extend({
             var fullLoss = backBtnFullWidth + doneBtnFullWidth + sbToggle + pageTitlePadding;
             //console.log(fullLoss);
             document.getElementById('mobi_page_title').style.width = (headerWidth - fullLoss)+"px";
+        },
+        resizeScrolls: function(){
+            Meteor.setTimeout(function(){ MobiRouter.initScrolls(); }, 100);
         },
 		/*resizeMobilePages: function(width, height, header, footer) {
 			$('.mobile_pages').css('width', $('#mobile_container').width());

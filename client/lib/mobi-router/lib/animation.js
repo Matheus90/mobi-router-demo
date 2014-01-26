@@ -3,7 +3,7 @@ jQuery.fn.hardwareAnimate = function(endProperties, duration, easing, callback, 
 		duration = duration || 1000,
 		easing = easing || 'easeOutExpo',
 		callback = callback || function() {
-			console.log('animation complete');
+			MobiRouter.speak('animation complete');
 		},
         before = before || function(){};
 	

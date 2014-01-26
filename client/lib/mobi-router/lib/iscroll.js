@@ -1184,10 +1184,20 @@ iScrollElements = {};
 setupIscroll = function(templateInstance) {
 	var page = templateInstance.find('.scrollable'),
         id = page.id;
-	
-	if(iScrollElements[id] == undefined) iScrollElements[id] = vScroll(id);
 
-	return iScrollElements[id].refresh();
+    if( !document.getElementById(id) || id == 'page_iscroll_' ) return false;
+
+    MobiRouter.speak(' setup iScroll for "'+id+'"');
+
+    if(iScrollElements[id] == undefined) iScrollElements[id] = vScroll(id);
+    else if(iScrollElements[id].wrapper != page){
+        iScrollElements[id].destroy();
+        iScrollElements[id] = vScroll(id);
+    }
+
+    return Meteor.setTimeout(function() {
+        iScrollElements[id].refresh()
+    }, 100);
 };
 
 clearScrolls = function() {

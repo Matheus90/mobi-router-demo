@@ -1,8 +1,15 @@
 
 MRouter = function(){
 
+    // Centralized speaking funtion for Mobi-Router
+    this.speak = function(message){
+        if( this.settings && !this.settings.canISpeak ) return false;
+        console.log('Mobi-Router: '+message);
+    };
+
     // Default settings for Mobi-Router
     var _settings = {
+        canISpeak: false,
         desktopWidth: 840,
         desktopHeight: 480,
         headerHeight: 45,
@@ -11,6 +18,8 @@ MRouter = function(){
         sidebarAutoOpenDesktop: true,
         sidebarDefaultWidth: 200,
         sidebarTemplate: 'sidebar',
+        defaultBackBtnText: 'Back',
+        defaultDoneBtnText: 'Done',
     };
     this.settings = {};
 
@@ -48,36 +57,81 @@ MRouter = function(){
     // The sequence currently in use
     var _currentSequence = false;
 
+    // It's a sequence full of moving values for the animateScroller() function
+    var _animationSequence = [];
+
+    // The currently used route
+    var _currentRoute = false;
+
+
+    /*******************************************************************************************************************
+     **************************************  PRIVATE functions  ********************************************************
+     ******************************************************************************************************************/
+
+
     /**
-     * @private functions
+     * Protected init function, runs after configure() ends
+     *
+     * @private
      */
-    // Protected init function, runs after configure() ends
     function _init(){
-        var _self = this;
+        var _this = this;
         if( document.readyState != 'complete' ){
             Meteor.setTimeout(function(){
-                return _init.call(_self);
+                return _init.call(_this);
             }, 25);
             return;
         }
-        console.log('Mobi-Router: initializing');
+        this.speak('initializing');
 
-        _goOpenedPage.call(this);
+        var sequence = _findSequenceByUrl();
+        if( !sequence ) this.go();
         resizeable.init(true);
+        if( sequence ) this.openSequence(sequence.name, 'url');
     };
 
-    // Check if the route exists, return the route if it does and return false if not
+
+    /**
+     * Check if the route exists, return the route if it does and return false if not
+     *
+     * @param name
+     * @returns {MobiRoute|false}
+     * @private
+     */
     function _getRoute(name){
-        name = name == undefined ? Session.get('actual_page') : name;
+        name = name ? name : Session.get('actual_page');
         var route = _routeMap[name];
-        if( route != undefined) return route;
+        _currentRoute = route ? route : false;
+        if( _currentRoute )
+            return _currentRoute;
 
-        var routeName = _findByUrl();
-        route = _routeMap[routeName];
-        return route ? route : false;
+        var r = _findByUrl();
+        route = _routeMap[r.name];
+        return _currentRoute = route ? route : false;
     };
 
-    // Find the current route from the url
+
+    /**
+     * Returns the MobiRoute object of the given route name
+     *
+     * @param name
+     * @returns {MobiRoute|false}
+     * @private
+     */
+    function _getRouteObj(name){
+        name = name ? name : Session.get('actual_page');
+        var route = _routeMap[name];
+        if( route )
+            return route;
+    };
+
+
+    /**
+     * Find the current route from the url
+     *
+     * @returns {MobiRoute|false}
+     * @private
+     */
     function _findByUrl(){
         var routePoints = [];
 
@@ -87,19 +141,35 @@ MRouter = function(){
         });
 
         routePoints = _.reject(routePoints, function(rp){ return rp.point === false });
-        //console.log(routePoints);
-        return _.max(routePoints, function(rp){ return rp.point});
+        return routePoints.length ? _.max(routePoints, function(rp){ return rp.point}) : false;
     };
 
-    // Search for current/asked sequence
+
+    /**
+     * Search for current/requested sequence
+     *
+     * @param name
+     * @returns {MobiSequence|false}
+     * @private
+     */
     function _getSequence(name){
         name = name == undefined ? Session.get('actual_page') : name;
         var sequence = _sequences[name];
-        if( sequence != undefined) return sequence;
-        else false;
+        _currentSequence = sequence ? sequence : false;
+        if( _currentSequence )
+            return _currentSequence;
+
+        _currentSequence = _findSequenceByUrl();
+        return _currentSequence;
     };
 
-    // Find the current sequence from the url
+
+    /**
+     * Find the current sequence from the url
+     *
+     * @returns {boolean}
+     * @private
+     */
     function _findSequenceByUrl(){
         var sequence = false;
         var location = window.location,
@@ -114,20 +184,14 @@ MRouter = function(){
         return sequence;
     };
 
-    // Opens landing page on site open
-    function _goOpenedPage(){
-        var landingSequence = _findSequenceByUrl();
-        if( landingSequence )
-            return this.openSequence(landingSequence.name);
 
-        _currentSequence = false;
-        var landingPage = _findByUrl(),
-            route = _getRoute(landingPage.name),
-            data = route ? route.getData() : {};
-        return this.go(landingPage.name, data);
-    };
-
-    // Set targeted menu item to active
+    /**
+     * Set the actually opened page's menu item to active
+     *
+     * @param name
+     * @returns {*}
+     * @private
+     */
     function _setMenuItemActive(name){
         if( !name || name == undefined ) return name;
 
@@ -142,15 +206,22 @@ MRouter = function(){
     };
 
 
+    /*******************************************************************************************************************
+     **************************************  PUBLIC functions  *********************************************************
+     ******************************************************************************************************************/
+
+
     /**
      * Extend default settings with developer-defined ones and stores it
      *
      * @param settings
      */
     this.configure = function(settings){
-        console.log('Mobi-Router: configuring');
         _settings = _.extend(_settings, settings);
         this.settings = _settings;
+
+        this.speak('configuration saved');
+
         _init.call(this);
     };
 
@@ -162,7 +233,7 @@ MRouter = function(){
      * @returns {boolean}
      */
     this.map = function(map){
-        console.log('Mobi-Router: saving router-map');
+        this.speak('saving router-map');
         _.each(map, function(route, name){
             _routeMap[name] = new MobiRoute(name, route);
         });
@@ -179,16 +250,18 @@ MRouter = function(){
      */
     this.addSequence = function(name, routes){
         if( _sequences[name] != undefined ) return false;
-        console.log('Mobi-Router: adding route sequence');
+        this.speak('adding route sequence');
 
         // Create new sequence
         _sequences[name] = new MobiSequence(name, {
             name: name,
             routes: _.compact(_.map(routes, function(r){
-                var route = _getRoute(r.name);
+                var route = _getRouteObj(r.name);
+                if( r.data != undefined )
+                    route.data = r.data;
                 // Check if it's an existing route or not
                 return route ? route : false;
-            })),
+            }))
         });
 
         if( !_sequences[name].routes.length ) delete _sequences[name];
@@ -212,8 +285,6 @@ MRouter = function(){
         else this.sizes.router.height = this.sizes.main.height = this.sizes.sidebar.height = this.showFullScreen ? height : settings.desktopHeight;
 
         this.sizes.main.width = this.sizes.router.width;
-        //if(this.sizes.sidebar.width && (this.sizes.router.width / this.sizes.sidebar.width < 2.2)) this.sizes.main.width = this.sizes.router.width;
-        //else this.sizes.main.width = this.sidebarShown ? this.sizes.router.width - this.sizes.sidebar.width + 5 : this.sizes.router.width;
 
         this.sizes.header.height = settings.headerHeight;
         this.sizes.header.width = this.sizes.main.width;
@@ -236,12 +307,13 @@ MRouter = function(){
 
 
     /**
-     *  Initializing and Refreshing iScrolls
+     *  Initializing and/or Refreshing iScrolls of the sidebar and the pages
      */
     this.initScrolls = function(){
-        initializeScrolls();
-        refreshIscrolls();
+        this.speak('initializing/refreshing iScrolls');
+
         this.refreshSidebarScroll();
+        Meteor.setTimeout(refreshIscrolls, 300);
     };
 
 
@@ -260,9 +332,9 @@ MRouter = function(){
         _setMenuItemActive(routeName);
 
         window.history.pushState("", "MobiRouter", route.getPath(params));
+        Session.set('actual_slide', 1);
         Session.set('actual_data', route.getData(params));
-        Session.set('actual_page', routeName);
-        Meteor.setTimeout(function(){ MobiRouter.initScrolls(); }, 300);
+        Session.set('actual_page', route.name);
     };
 
 
@@ -272,12 +344,13 @@ MRouter = function(){
      * @returns {html}
      */
     this.content = function(){
-        var actual = Session.get('actual_page'),
+        var routeName = Session.get('actual_page'),
             data = Session.get('actual_data'),
-            route = _getRoute(actual);
+            route = _getRoute(routeName);
         if( !route ) return '';
 
-        var _this = this;
+        Meteor.setTimeout(function(){ resizeable.resizeAllElements(); }, 100);
+
         return Template[route.template](data);
     };
 
@@ -291,19 +364,36 @@ MRouter = function(){
      * @returns {boolean}
      */
     this.openSequence = function(name, slide, data){
+        _currentRoute = false;
         if( _sequences[name] == undefined ) return false;
 
         _currentSequence = _sequences[name];
+        var fromUrl = slide == 'url',
+            slideNow =  fromUrl ? 1 : _currentSequence.currentSlide(),
+            slide = fromUrl ? _currentSequence.getSlideFromUrl() : parseInt(slide);
 
-        slide = slide ? slide : _currentSequence.getSlideFromUrl();
+        if( slide > _currentSequence.stackSize || slide < 1) return false;
+
+        data = !fromUrl && !data ? _currentSequence.storedData['s'+slide] : (data ? data : _currentSequence.getDataFromUrl(slide));
+        _currentSequence.storeData(slide, data);
         window.history.pushState("", "MobiRouter", _currentSequence.getPath(slide, data));
-        data = data ? data : _currentSequence.getDataFromUrl(slide);
 
-        _setMenuItemActive(name);
-
-        Session.set('actual_slide', slide);
         Session.set('actual_page', name);
+        Session.set('actual_slide', slide);
         Session.set('actual_data', data);
+
+        _setMenuItemActive.call(this, name);
+
+        var move = (slideNow - slide) * this.sizes.content.width;
+        _animationSequence.push(move);
+        if( document.getElementById('sequence_scroller') )
+            this.animateScroller();
+    };
+
+    this.animateScroller = function(){
+        if( !this.isSequence() || _animationSequence.length == 0 ) return;
+        var move = _animationSequence.shift();
+        if(_.isNumber(move) ) $('#sequence_scroller').hardwareAnimate({translateX: move}, 500, 'easeOutExpo');
     };
 
 
@@ -316,14 +406,20 @@ MRouter = function(){
      */
     this.slideTo = function(slide, data){
         if( !_currentSequence ) return false;
-        var _this = this;
 
-        var slideNow = _currentSequence.getSlideFromUrl();
-        if( slide > this.getSlideStackSize() || slide < 1 ) return;
-        var move = (slideNow - slide) * document.getElementById('sequence_slider_wrapper').offsetWidth;
-        $('#sequence_scroller').hardwareAnimate({translateX: move}, 500, 'easeOutExpo', function(){
-            _this.openSequence(_currentSequence.name, slide);
-        });
+        if( slide == undefined || slide > this.getSlideStackSize() || slide < 1 ) return;
+        this.openSequence(_currentSequence.name, slide, data);
+    };
+
+
+    /**
+     * Simple check for being in a route sequence or not
+     *
+     * @returns {boolean}
+     */
+    this.isSequence = function(){
+        var refresh = Session.get('actual_page');
+        return Boolean(_getSequence());
     };
 
 
@@ -333,8 +429,59 @@ MRouter = function(){
      * @returns {MobiRoute}
      */
     this.currentRoute = function(){
-        return _getRoute();
+        return _currentRoute;
+    }; //-> this should return the object i made above, e.g: "{id: 'home', path: etc}
+
+
+    /**
+     * Provide the current sequence
+     *
+     * @returns {boolean}
+     */
+    this.currentSequence = function(){
+        return _currentSequence;
     };
+
+
+    /**
+     * Provide current slide's MobiRoute object or false on failure
+     *
+     * @returns {MobiRoute|false}
+     */
+    this.currentSlide = function(){
+        return this.isSequence() ? _currentSequence.actualRoute() : false;
+    };
+
+
+    /**
+     * Provide current slide's position in the sequence
+     *
+     * @returns {number}
+     */
+    this.currentSlideNum = function(){
+        return this.isSequence() ? _currentSequence.currentSlide() : 1;
+    };
+
+
+    /**
+     * Current route's name
+     *
+     * @returns {string}
+     */
+    this.currentRouteName = function(){
+        return this.isSequence() ? String(this.currentSlide().name) : String(this.currentRoute().name);
+    };
+
+
+    /**
+     * Current route's template name
+     *
+     * @returns {string}
+     */
+    this.currentTemplate = function(){
+        return this.isSequence() ? String(this.currentSlide().template) : String(this.currentRoute().template);
+    };
+
 
     /**
      * Renders the provided sidebar template into the position
@@ -345,40 +492,44 @@ MRouter = function(){
         return Template[_settings.sidebarTemplate]();
     };
 
+
+    /**
+     * Opens the sidebar by moving the content right
+     *
+     * @returns {true}
+     */
     this.showSidebar = function(){
         if(this.sidebarShown) return;
-        console.log('Mobi-Router: show sidebar');
+        this.speak('show sidebar');
         var _this = this;
-
-        //if( _this.sizes.sidebar.width && _this.sizes.router.width/_this.sizes.sidebar.width > 2.2 )
-        //    $('#mobi_page_title').animate({width: (parseInt(window.getComputedStyle(document.getElementById('mobi_page_title')).width) - _this.sizes.sidebar.width+5)}, 100, 'easeInExpo');
 
         $('#mobi_main').hardwareAnimate({translateX: this.sizes.sidebar.width - 5}, 300, 'easeOutExpo', function(){}, function(){
             refreshIscrolls();
-            /*if( _this.sizes.sidebar.width && _this.sizes.router.width/_this.sizes.sidebar.width > 2.2 ) $('#mobi_main').animate({width: _this.sizes.router.width - _this.sizes.sidebar.width + 5}, 150, 'easeInExpo', function(){
-                Meteor.setTimeout(resizeable.elements.resizeTitle, 300);
-            });*/
             _this.mainTranslateX += _this.sizes.sidebar.width;
         });
         this.sidebarShown = true;
+
+        return true;
     };
 
+
+    /**
+     * Closes the sidebar by moving the content back to the left
+     *
+     * @returns {true}
+     */
     this.hideSidebar = function(){
         if(!this.sidebarShown) return;
-        console.log('Mobi-Router: hide sidebar');
+        this.speak('hide sidebar');
         var _this = this;
-
-        //if( _this.sizes.sidebar.width && _this.sizes.router.width/_this.sizes.sidebar.width > 2.2 )
-        //    $('#mobi_page_title').animate({width: (parseInt(window.getComputedStyle(document.getElementById('mobi_page_title')).width) + _this.sizes.sidebar.width -5)}, 100, 'easeInExpo');
 
         $('#mobi_main').hardwareAnimate({translateX: -this.sizes.sidebar.width + 5}, 300, 'easeOutExpo', function(){}, function(){
             refreshIscrolls();
-            /*if( _this.sizes.sidebar.width && _this.sizes.router.width/_this.sizes.sidebar.width > 2.2 ) $('#mobi_main').animate({width: _this.sizes.router.width}, 300, 'easeOutExpo', function(){
-                Meteor.setTimeout(resizeable.elements.resizeTitle, 300);
-            });*/
             _this.mainTranslateX += -_this.sizes.sidebar.width;
         });
         this.sidebarShown = false;
+
+        return true;
     };
 
 
@@ -390,7 +541,7 @@ MRouter = function(){
     this.getPageTitle = function(){
         var name = Session.get('actual_page'),
             sequence = _getSequence(),
-            route = !sequence || sequence == undefined ? _getRoute(name) : sequence.actualRoute(),
+            route = !sequence || sequence == undefined ? _currentRoute : sequence.actualRoute(),
             data = Session.get('actual_data'),
             slide = Session.get('actual_slide');
 
@@ -399,86 +550,129 @@ MRouter = function(){
         var title = data && data.title ? data.title : route.defaultTitle;
         title = title ? title : '';
 
-        //console.log(title.match(/\{:(\w+)\}/g));
         _.each(title.match(/\{:(\w+)\}/g), function(param){
             var key = param.replace('{:', '').replace('}', '');
-            title = title.replace('{:'+key+'}', String(data[key] ? data[key] : ''));
+            title = title.replace('{:'+key+'}', String(data && data[key] ? data[key] : ''));
         });
 
         return String(title);
     };
 
+
+    /**
+     * Returns a boolean value of whether the "Back" button of the sequences should be shown
+     *
+     * @returns {boolean}
+     */
     this.hasBackBtn = function(){
-        return this.isSequence(); //true;
+        var data = Session.get('actual_data');
+        if( data && data.showBackButton == false ) return false;
+        return this.isSequence() && ( this.currentSlideNum() > 1 || (data && data.showBackButton == true) );
     };
+
+
+    /**
+     * Returns a boolean value of whether the "Done" button of the sequences should be shown
+     *
+     * @returns {boolean}
+     */
     this.hasDoneBtn = function(){
-        return this.isSequence(); //true;
+        var data = Session.get('actual_data');
+        if( data && data.showDoneButton === false ) return false;
+        return this.isSequence() && ( this.currentSlideNum() < this.getSlideStackSize() || (data && data.showDoneButton == true) );
     };
 
+
+    /**
+     * Developer can change the text of "Back" button by setting the "backBtnText" parameter of the page
+     *
+     * @returns {string|"Back"}
+     */
     this.backBtn = function(){
-        return 'Back';
-    };
-    this.doneBtn = function(){
-        return 'Done';
+        var data = Session.get('actual_data');
+        return data && data.backBtnText ? String(data.backBtnText) : String(this.settings.defaultBackBtnText);
     };
 
+
+    /**
+     * Developer can change the text of "Done" button by setting the "doneBtnText" parameter of the page
+     *
+     * @returns {string|"Done"}
+     */
+    this.doneBtn = function(){
+        var data = Session.get('actual_data');
+        return data && data.doneBtnText ? String(data.doneBtnText) : String(this.settings.defaultDoneBtnText);
+    };
+
+
+    /**
+     * Public clue to move left on route sequence sliders
+     *
+     * @param stepsToMove
+     * @returns {boolean}
+     */
     this.prev = function(stepsToMove){
         if( !_currentSequence ) return false;
         stepsToMove = stepsToMove ? Math.abs(stepsToMove) : 1;
-        var _this = this;
 
-        var slideNow = _currentSequence.getSlideFromUrl(),
+        var slideNow = _currentSequence.currentSlide(),
             slide = slideNow - stepsToMove;
-        if( slide < 1 ) return;
-        var move = stepsToMove * document.getElementById('sequence_slider_wrapper').offsetWidth;
-        $('#sequence_scroller').hardwareAnimate({translateX: move}, 500, 'easeOutExpo', function(){
-            _this.openSequence(_currentSequence.name, slide);
-        });
-    }  // -> global way to move to previous slide
 
+        return this.openSequence(_currentSequence.name, slide);
+    };
+
+
+    /**
+     * Public clue to move right on route sequence sliders
+     *
+     * @param stepsToMove
+     * @returns {boolean}
+     */
     this.next = function(stepsToMove){
         if( !_currentSequence ) return false;
         stepsToMove = stepsToMove ? Math.abs(stepsToMove) : 1;
-        var _this = this;
 
-        var slideNow = _currentSequence.getSlideFromUrl(),
+        var slideNow = _currentSequence.currentSlide(),
             slide = slideNow + stepsToMove;
-        if( slide > this.getSlideStackSize() ) return;
-        var move = -stepsToMove * document.getElementById('sequence_slider_wrapper').offsetWidth;
-        $('#sequence_scroller').hardwareAnimate({translateX: move}, 500, 'easeOutExpo', function(){
-            _this.openSequence(_currentSequence.name, slide);
-        });
-    } //-> this one takes the child route to move to as a parameter
 
-    this.getModel = function(){
+        this.openSequence(_currentSequence.name, slide);
+    };
+
+
+    /**
+     * Get the actual stored data
+     *
+     * @returns {Object}
+     */
+    this.getData = function(){
         var route = this.currentRoute();
         return route ? route.getData() : {};
     }; //->u will notice i have a bunch of global functions like this: http://snapplr.com/xj4k which get a model based on a session-stored id. We need a consistent API for this.
 
-    this.setModel = function(obj){} //-> on every page change, the model should be set to null unless explicitly set by the developer
 
-
-    this.currentRoute = function(){} //-> this should return the object i made above, e.g: "{id: 'home', path: etc}
-
-    this.currentTemplate = function(){
-
-    } //-> quick global way to get current template
-
+    /**
+     * An arra full of the current sequence's route objects
+     *
+     * @returns {array(MobiRoute)}
+     */
     this.getSlideStack = function(){
         var currentSequence = _getSequence();
         if( !currentSequence ) return [];
-        else return _.pluck(currentSequence.routes, 'template');
-    } //-> returns an array of the slides on the current stack.
+        else return currentSequence.routes;
+    };
 
+
+    /**
+     * Number of routes in the actual sequence
+     *
+     * @returns {number}
+     */
     this.getSlideStackSize = function(){
         var currentSequence = _getSequence();
         if( !currentSequence ) return 0;
         else return currentSequence.routes.length;
-    } // -> this # is similar to our old slide_step #, but we shouldn't need it much anymore. we only need it to see if we can go back any farther. if the # == 1 then we cant go back any farther.
-
-    this.isSequence = function(){
-        return _getSequence();
     };
+
 
     // Testing functions
     this.getMap = function(){ return _routeMap; };
@@ -489,7 +683,6 @@ MRouter = function(){
 
 MobiRouter = new MRouter;
 
-
 Function.prototype.duplicate = function() {
     var that = this;
     var temp = function temporary() { return that.apply(this, arguments); };
@@ -499,28 +692,9 @@ Function.prototype.duplicate = function() {
     return temp;
 };
 
-applyAllScrolls = function() {
-    console.log('Mobi-Router: apply all scrolls');
-    var templates = ['mobi_sidebar', 'mobi_content'];  //_.pluck(MobiRouter.getMap(), 'template');
-    _.each(templates, function(name, key){
-        //if(name.substring(0,5) == 'page_' || name === 'mobi_sidebar') { //loop through all page_ templates and mobi_sidebar template
-            (function() {
-                if(Template[name].rendered != undefined) var oldRendered = Template[name].rendered.duplicate(); //clone original rendered function
-
-                Template[name].rendered = function() {
-                    var _this = this;
-                    Meteor.setTimeout(function() {
-                        setupIscroll(_this); //tack this on after the original rendered function ;)
-                        if(oldRendered) oldRendered(); //call original rendered function
-                    }, 0);
-                };
-            })();
-        //}
-    });
-};
-
-initializeScrolls = _.once(applyAllScrolls);
-
 $(document).ready(function(){
-   MobiRouter.initScrolls();
+    Meteor.setTimeout(function(){
+        resizeable.resizeAllElements();
+        MobiRouter.initScrolls();
+    }, 100);
 });

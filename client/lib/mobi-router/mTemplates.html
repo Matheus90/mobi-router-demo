@@ -58,17 +58,15 @@
         {{#if isSequence}}
             <div id="sequence_slider_wrapper">
                 <div id="sequence_scroller" class="scroller">
-                {{>sliding_page_wrapper}}
-                </div>
-            </div>
-        {{else}}
-            <div id="mobi_page" class="scrollable mobi_page">
-                <div class="scroller">
                     {{#isolate}}
-                    {{{content}}}
+                    {{>sliding_page_wrapper}}
                     {{/isolate}}
                 </div>
             </div>
+        {{else}}
+            {{#isolate}}
+            {{>mobi_page_content MobiRouter.currentRoute}}
+            {{/isolate}}
         {{/if}}
     </div>
 </template>
@@ -76,10 +74,18 @@
 
 <template name="sliding_page_wrapper">
     {{#each slides}}
-        <div class="scrollable mobi_page">
-            <div class="scroller">
-            {{{renderSlide this}}}
-            </div>
-        </div>
+        {{#isolate}}
+        {{>mobi_page_content this}}
+        {{/isolate}}
     {{/each}}
+</template>
+
+<template name="mobi_page_content">
+    <div id="page_iscroll_{{name}}" class="scrollable mobi_page">
+        <div class="scroller">
+            {{#isolate}}
+            {{{content}}}
+            {{/isolate}}
+        </div>
+    </div>
 </template>

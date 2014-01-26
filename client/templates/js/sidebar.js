@@ -18,7 +18,7 @@ Template.sidebar.events({
         MobiRouter.hideSidebar();
     },
     "click .menu_item_signup, touch .menu_item_signup" : function(e){
-        MobiRouter.openSequence('signup', 1, {email: "90.matheus@gmail.com"});
+        MobiRouter.openSequence('signup', 1, {first: "90.matheus@gmail.com"});
         MobiRouter.hideSidebar();
     },
 });

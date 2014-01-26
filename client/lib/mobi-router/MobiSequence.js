@@ -7,10 +7,36 @@ MobiSequence = function(name, params){
         stackSize: 0
     };
 
+    // For inner functions
+    var _this = this;
+
+    // Storing data for each slide for reuse on step-back
+    this.storedData = {};
+
+
+    /**
+     * Store data for the slide for be able to reuse it when clicking/triggering slide-back
+     *
+     * @param slide
+     * @param data
+     */
+    this.storeData = function(slide, data){
+        var data = data ? data : {};
+        this.storedData['s'+slide] = data;
+    };
+
     _.extend(_defaultParams, params);
     _defaultParams.name = name;
     _.extend(this, _defaultParams);
     this.stackSize = this.routes.length;
+
+
+    /**
+     *  Loop throught each routes to create a default empty object as stored data
+     */
+    _.each(this.routes, function(r, key){
+        _this.storeData(key+1, {});
+    });
 
 
     /**
@@ -32,45 +58,82 @@ MobiSequence = function(name, params){
         return newPath;
     };
 
+
+    /**
+     * Provide the actual route within the sequence
+     *
+     * @returns {MobiRoute|false}
+     */
     this.actualRoute = function(){
         var route = this.routes[this.getSlideFromUrl()-1];
         return route ? route : false;
     };
 
+
     /**
      * Reading parameters from the url
      *
      * @param preParams
-     * @returns {{}}
+     * @returns {object}
      * @private
      */
-    function _readParams(preParams){
-        var pathArr = this.path.split('/');
-        var location = window.location.pathname.split('/');
-        var params = {};
+    function _readParams(route){
+        var pathArr = route.path.split('/'),
+            location = window.location.pathname.split('/'),
+            params = {};
+
         _.each(pathArr, function(param, key){
             if( param.indexOf(':') == 0 ){
-                params[param.replace(':', '')] = location[key];
+                params[param.replace(':', '')] = location[key+2];
             }
         });
-        _.extend(params, preParams);
         return params;
     };
 
+
+    /**
+     * Provide the actual slide's number in the sequence
+     *
+     * @returns {number}
+     */
+    this.currentSlide = function(){
+        var slideNow = Session.get('actual_slide');
+        return slideNow ? slideNow : 1;
+    };
+
+
+    /**
+     * Provide the actual slide's number from the url
+     *
+     * @returns {number}
+     */
     this.getSlideFromUrl = function(){
         var location = window.location.pathname.split('/');
         return location[2] ? parseInt(location[2], 10) : 1;
     };
 
-    this.getDataFromUrl = function(){
-        return {};
-        /*if( _.isFunction(this.data) ){
-            this.params = _readParams.call(this, params);
-            return this.data();
+
+    /**
+     * Provide data object for the given slide within the actual sequence from the url
+     *
+     * @param slide
+     * @returns {object}
+     */
+    this.getDataFromUrl = function(slide){
+        var route = slide ? this.routes[slide-1] : this.actualRoute();
+        if( _.isFunction(route.data) ){
+            route.params = _readParams.call(this, route);
+            return route.data();
         }else
-            return this.data;*/
+            return route.data;
     };
 
+
+    /**
+     * It's used for creating a list of sequences' points from the url to decide which one is the actual
+     *
+     * @returns {number}
+     */
     this.checkUrlMatch = function(){
         var path = this.path,
             location = window.location,

@@ -23,28 +23,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="MobiRouter.css" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/client/lib/mobi-router/MobiRouter.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="239" column="16" selection-start="5216" selection-end="5216" vertical-scroll-proportion="-23.766666" vertical-offset="3589" max-vertical-offset="4482">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="mTemplates.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/client/lib/mobi-router/mTemplates.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="49" column="20" selection-start="1331" selection-end="1331" vertical-scroll-proportion="-15.851851" vertical-offset="454" max-vertical-offset="1620">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MobiRoute.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/client/lib/mobi-router/MobiRoute.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="39" column="17" selection-start="1163" selection-end="1163" vertical-scroll-proportion="0.0" vertical-offset="301" max-vertical-offset="2070">
+            <state line="78" column="20" selection-start="2025" selection-end="2025" vertical-scroll-proportion="0.0" vertical-offset="850" max-vertical-offset="1728">
               <folding />
             </state>
           </provider>
@@ -53,25 +35,16 @@
       <file leaf-file-name="mTemplates.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/client/lib/mobi-router/mTemplates.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="61" column="6" selection-start="1555" selection-end="1555" vertical-scroll-proportion="0.0" vertical-offset="643" max-vertical-offset="1548">
+            <state line="60" column="2" selection-start="1441" selection-end="1441" vertical-scroll-proportion="0.0" vertical-offset="1080" max-vertical-offset="2016">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="sidebar.js" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/client/templates/js/sidebar.js">
+      <file leaf-file-name="MobiRoute.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/client/lib/mobi-router/MobiRoute.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="22" column="6" selection-start="906" selection-end="906" vertical-scroll-proportion="0.43756905" vertical-offset="0" max-vertical-offset="905">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MobiRouter.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/client/lib/mobi-router/MobiRouter.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="343" column="30" selection-start="10438" selection-end="10438" vertical-scroll-proportion="0.0" vertical-offset="5750" max-vertical-offset="9558">
+            <state line="16" column="0" selection-start="327" selection-end="327" vertical-scroll-proportion="0.0" vertical-offset="288" max-vertical-offset="2070">
               <folding />
             </state>
           </provider>
@@ -80,7 +53,16 @@
       <file leaf-file-name="resizeable.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/client/lib/mobi-router/lib/resizeable.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="73" column="10" selection-start="4226" selection-end="4226" vertical-scroll-proportion="0.0" vertical-offset="648" max-vertical-offset="2034">
+            <state line="7" column="11" selection-start="204" selection-end="204" vertical-scroll-proportion="0.0" vertical-offset="108" max-vertical-offset="2034">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MobiRouter.js" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/client/lib/mobi-router/MobiRouter.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="367" column="49" selection-start="10727" selection-end="10727" vertical-scroll-proportion="0.45515695" vertical-offset="6200" max-vertical-offset="12690">
               <folding />
             </state>
           </provider>
@@ -89,25 +71,43 @@
       <file leaf-file-name="MobiSequence.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/client/lib/mobi-router/MobiSequence.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="37" column="6" selection-start="1013" selection-end="1013" vertical-scroll-proportion="0.0" vertical-offset="108" max-vertical-offset="1746">
+            <state line="129" column="0" selection-start="3202" selection-end="3202" vertical-scroll-proportion="0.0" vertical-offset="2005" max-vertical-offset="2880">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="signup.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/client/templates/views/signup.html">
+      <file leaf-file-name="signup.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/client/templates/js/signup.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="8" column="0" selection-start="317" selection-end="317" vertical-scroll-proportion="-5.3333335" vertical-offset="0" max-vertical-offset="486">
+            <state line="7" column="6" selection-start="138" selection-end="138" vertical-scroll-proportion="0.0" vertical-offset="126" max-vertical-offset="252">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="signup.css" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/client/css/signup.css">
+      <file leaf-file-name="home.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/client/templates/js/home.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="1" column="12" selection-start="13" selection-end="13" vertical-scroll-proportion="0.0" vertical-offset="18" max-vertical-offset="288">
+            <state line="5" column="51" selection-start="87" selection-end="87" vertical-scroll-proportion="0.0" vertical-offset="90" max-vertical-offset="234">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="sidebar.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/client/templates/js/sidebar.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="20" column="76" selection-start="863" selection-end="863" vertical-scroll-proportion="0.0" vertical-offset="360" max-vertical-offset="522">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MobiRouter.css" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/client/lib/mobi-router/MobiRouter.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="239" column="16" selection-start="5216" selection-end="5216" vertical-scroll-proportion="0.0" vertical-offset="3577" max-vertical-offset="4482">
               <folding />
             </state>
           </provider>
@@ -138,36 +138,38 @@
         <option value="$PROJECT_DIR$/client/mobi-router/templates.html" />
         <option value="$PROJECT_DIR$/client/mobi-router/MobiRouter.js" />
         <option value="$PROJECT_DIR$/client/templates/js/hello.js" />
-        <option value="$PROJECT_DIR$/client/lib/mobi-router/lib/animation.js" />
         <option value="$PROJECT_DIR$/client/lib/mobi-router/lib/_touch.js" />
         <option value="$PROJECT_DIR$/client/lib/mobi-router/templates.js" />
         <option value="$PROJECT_DIR$/client/lib/mobi-router/templates.html" />
         <option value="$PROJECT_DIR$/client/lib/mobi-router/mobi_router.css" />
-        <option value="$PROJECT_DIR$/client/templates/js/home.js" />
         <option value="$PROJECT_DIR$/client/lib/mobi-router/helpers.js" />
-        <option value="$PROJECT_DIR$/client/lib/mobi-router/lib/iscroll.js" />
         <option value="$PROJECT_DIR$/.meteor/local/build/programs/client/app/client/lib/mobi-router/MobiRouter.css" />
-        <option value="$PROJECT_DIR$/.meteor/local/build/programs/client/app/client/lib/mobi-router/MobiRouter.js" />
         <option value="$PROJECT_DIR$/.meteor/local/build/programs/client/app/client/lib/mobi-router/lib/resizeable.js" />
-        <option value="$PROJECT_DIR$/.meteor/local/build/programs/client/app/client/lib/mobi-router/mTemplates.js" />
-        <option value="$PROJECT_DIR$/client/templates/views/home.html" />
         <option value="$PROJECT_DIR$/client/templates/views/posts.html" />
         <option value="$PROJECT_DIR$/client/templates/views/hello.html" />
         <option value="$PROJECT_DIR$/client/templates/views/about.html" />
         <option value="$PROJECT_DIR$/client/templates/views/main.html" />
-        <option value="$PROJECT_DIR$/client/templates/views/signup.html" />
         <option value="$PROJECT_DIR$/client/css/main.css" />
         <option value="$PROJECT_DIR$/client/css/signup.css" />
-        <option value="$PROJECT_DIR$/client/lib/mobi-router/MobiRoute.js" />
-        <option value="$PROJECT_DIR$/client/templates/views/sidebar.html" />
-        <option value="$PROJECT_DIR$/client/lib/mobi-router/lib/resizeable.js" />
         <option value="$PROJECT_DIR$/client/lib/mobi-router/MobiRouter.css" />
-        <option value="$PROJECT_DIR$/client/lib/mobi-router/MobiSequence.js" />
+        <option value="$PROJECT_DIR$/client/templates/views/home.html" />
+        <option value="$PROJECT_DIR$/client/lib/mobi-router/lib/resizeable.js" />
+        <option value="$PROJECT_DIR$/client/templates/views/sidebar.html" />
+        <option value="$PROJECT_DIR$/.meteor/local/build/programs/client/app/client/lib/mobi-router/mTemplates.js" />
+        <option value="$PROJECT_DIR$/client/lib/mobi-router/mTemplates.html" />
+        <option value="$PROJECT_DIR$/.meteor/local/build/programs/client/app/client/lib/mobi-router/MobiRouter.js" />
+        <option value="$PROJECT_DIR$/client/lib/mobi-router/lib/animation.js" />
+        <option value="$PROJECT_DIR$/client/lib/js/router.js" />
+        <option value="$PROJECT_DIR$/client/lib/mobi-router/MobiRoute.js" />
+        <option value="$PROJECT_DIR$/client/templates/views/signup.html" />
+        <option value="$PROJECT_DIR$/client/templates/js/home.js" />
+        <option value="$PROJECT_DIR$/client/lib/mobi-router/lib/iscroll.js" />
+        <option value="$PROJECT_DIR$/client/templates/js/signup.js" />
         <option value="$PROJECT_DIR$/client/js/router.js" />
+        <option value="$PROJECT_DIR$/client/templates/js/sidebar.js" />
+        <option value="$PROJECT_DIR$/client/lib/mobi-router/MobiSequence.js" />
         <option value="$PROJECT_DIR$/client/lib/mobi-router/mTemplates.js" />
         <option value="$PROJECT_DIR$/client/lib/mobi-router/MobiRouter.js" />
-        <option value="$PROJECT_DIR$/client/lib/mobi-router/mTemplates.html" />
-        <option value="$PROJECT_DIR$/client/templates/js/sidebar.js" />
       </list>
     </option>
   </component>
@@ -377,28 +379,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="lib" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bootstrap" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mobi" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mobi" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="client" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="js" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -441,11 +421,11 @@
       <recent name="$PROJECT_DIR$/client/lib/mobi-router/lib" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/client" />
+      <recent name="$PROJECT_DIR$/client/js" />
       <recent name="$PROJECT_DIR$/client/lib" />
       <recent name="$PROJECT_DIR$/client/mobi-router" />
       <recent name="$PROJECT_DIR$/client/templates/js" />
-      <recent name="$PROJECT_DIR$/client/templates/views" />
-      <recent name="$PROJECT_DIR$/client/js" />
     </key>
   </component>
   <component name="RunManager">
@@ -492,10 +472,10 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-1855" y="24" width="1855" height="1056" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.17689331" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18739635" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -545,16 +525,6 @@
     </PATH>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/client/templates/js/home.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="6" selection-start="81" selection-end="81" vertical-scroll-proportion="0.0" vertical-offset="72" max-vertical-offset="198" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/templates/js/hello.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="0" selection-start="2" selection-end="75" vertical-scroll-proportion="0.0" vertical-offset="36" max-vertical-offset="324" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/client/js/router.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="29" column="18" selection-start="553" selection-end="553" vertical-scroll-proportion="0.0" vertical-offset="522" max-vertical-offset="756" />
@@ -645,23 +615,6 @@
         <state line="12" column="3" selection-start="287" selection-end="287" vertical-scroll-proportion="0.23867403" vertical-offset="0" max-vertical-offset="905" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/lib/mobi-router/lib/animation.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="26" selection-start="396" selection-end="396" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1404" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/templates/js/home.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="3" selection-start="85" selection-end="85" vertical-scroll-proportion="0.059668507" vertical-offset="0" max-vertical-offset="905" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/lib/mobi-router/helpers.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="32" selection-start="258" selection-end="268" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="306">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/client/lib/mobi-router/lib/_touch.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="47" column="48" selection-start="1284" selection-end="1284" vertical-scroll-proportion="0.0" vertical-offset="427" max-vertical-offset="1926" />
@@ -672,31 +625,14 @@
         <state line="26" column="29" selection-start="954" selection-end="954" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1170" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/lib/mobi-router/lib/iscroll.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="1188" column="0" selection-start="35960" selection-end="35960" vertical-scroll-proportion="0.0" vertical-offset="20726" max-vertical-offset="21636" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/.meteor/local/build/programs/client/app/client/lib/mobi-router/MobiRouter.css">
       <provider selected="true" editor-type-id="text-editor">
         <state line="78" column="6" selection-start="1673" selection-end="1673" vertical-scroll-proportion="0.0" vertical-offset="1208" max-vertical-offset="2988" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.meteor/local/build/programs/client/app/client/lib/mobi-router/MobiRouter.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="299" column="29" selection-start="8699" selection-end="8699" vertical-scroll-proportion="0.0" vertical-offset="5190" max-vertical-offset="7470">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/.meteor/local/build/programs/client/app/client/lib/mobi-router/lib/resizeable.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="36" column="10" selection-start="1637" selection-end="1637" vertical-scroll-proportion="0.0" vertical-offset="456" max-vertical-offset="1746" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.meteor/local/build/programs/client/app/client/lib/mobi-router/mTemplates.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="46" column="29" selection-start="988" selection-end="988" vertical-scroll-proportion="0.0" vertical-offset="542" max-vertical-offset="1494" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/public/sidebar_page_tab.png">
@@ -721,26 +657,17 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/client/lib/bootstrap/bootstrap.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="127854">
-          <folding />
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="127854" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/client/lib/bootstrap/bootstrap.min.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="7" selection-start="132" selection-end="132" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="126">
-          <folding />
-        </state>
+        <state line="5" column="7" selection-start="132" selection-end="132" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="126" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/client/templates/views/main.html">
       <provider selected="true" editor-type-id="text-editor">
         <state line="13" column="10" selection-start="519" selection-end="519" vertical-scroll-proportion="0.2665148" vertical-offset="0" max-vertical-offset="878" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/templates/views/home.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="23" selection-start="47" selection-end="71" vertical-scroll-proportion="-1.3333334" vertical-offset="0" max-vertical-offset="594" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/client/css/main.css">
@@ -750,84 +677,129 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/client/css/signup.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="12" selection-start="13" selection-end="13" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="288">
-          <folding />
-        </state>
+        <state line="1" column="12" selection-start="13" selection-end="13" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="288" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/lib/mobi-router/MobiRoute.js">
+    <entry file="file://$PROJECT_DIR$/client/lib/mobi-router/helpers.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="39" column="17" selection-start="1163" selection-end="1163" vertical-scroll-proportion="0.0" vertical-offset="301" max-vertical-offset="2070">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/templates/views/signup.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="0" selection-start="317" selection-end="317" vertical-scroll-proportion="-5.3333335" vertical-offset="0" max-vertical-offset="486">
+        <state line="11" column="3" selection-start="275" selection-end="275" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="306">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/client/templates/views/sidebar.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="0" selection-start="786" selection-end="786" vertical-scroll-proportion="-12.0" vertical-offset="0" max-vertical-offset="432">
+        <state line="16" column="10" selection-start="773" selection-end="773" vertical-scroll-proportion="0.32801822" vertical-offset="0" max-vertical-offset="878" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.meteor/local/build/programs/client/app/client/lib/mobi-router/mTemplates.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="70" column="0" selection-start="1726" selection-end="1726" vertical-scroll-proportion="0.0" vertical-offset="686" max-vertical-offset="1962" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.meteor/local/build/programs/client/app/client/lib/mobi-router/MobiRouter.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="105" column="33" selection-start="3139" selection-end="3139" vertical-scroll-proportion="0.0" vertical-offset="1567" max-vertical-offset="12672">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/lib/mobi-router/lib/resizeable.js">
+    <entry file="file://$PROJECT_DIR$/client/lib/mobi-router/lib/animation.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="73" column="10" selection-start="4226" selection-end="4226" vertical-scroll-proportion="0.0" vertical-offset="648" max-vertical-offset="2034">
+        <state line="18" column="22" selection-start="505" selection-end="505" vertical-scroll-proportion="0.35801104" vertical-offset="0" max-vertical-offset="1404" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/lib/js/router.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1152" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/templates/views/signup.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="22" column="11" selection-start="812" selection-end="812" vertical-scroll-proportion="0.0" vertical-offset="396" max-vertical-offset="504" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/templates/views/home.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="32" column="11" selection-start="699" selection-end="699" vertical-scroll-proportion="0.65603644" vertical-offset="0" max-vertical-offset="878" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/js/router.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="40" column="6" selection-start="1105" selection-end="1105" vertical-scroll-proportion="0.7955801" vertical-offset="0" max-vertical-offset="1170" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/templates/js/home.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="5" column="51" selection-start="87" selection-end="87" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="234">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/client/lib/mobi-router/MobiRouter.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="239" column="16" selection-start="5216" selection-end="5216" vertical-scroll-proportion="-23.766666" vertical-offset="3589" max-vertical-offset="4482">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/lib/mobi-router/MobiSequence.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="37" column="6" selection-start="1013" selection-end="1013" vertical-scroll-proportion="0.0" vertical-offset="108" max-vertical-offset="1746">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/js/router.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="38" column="29" selection-start="1012" selection-end="1012" vertical-scroll-proportion="0.54254144" vertical-offset="193" max-vertical-offset="1098">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/lib/mobi-router/MobiRouter.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="343" column="30" selection-start="10438" selection-end="10438" vertical-scroll-proportion="0.0" vertical-offset="5750" max-vertical-offset="9558">
+        <state line="239" column="16" selection-start="5216" selection-end="5216" vertical-scroll-proportion="0.0" vertical-offset="3589" max-vertical-offset="4482">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/client/lib/mobi-router/mTemplates.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="49" column="20" selection-start="1331" selection-end="1331" vertical-scroll-proportion="-15.851851" vertical-offset="454" max-vertical-offset="1620">
+        <state line="78" column="20" selection-start="2025" selection-end="2025" vertical-scroll-proportion="0.0" vertical-offset="850" max-vertical-offset="1728">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/lib/mobi-router/mTemplates.js">
+    <entry file="file://$PROJECT_DIR$/client/templates/js/signup.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="61" column="6" selection-start="1555" selection-end="1555" vertical-scroll-proportion="0.0" vertical-offset="535" max-vertical-offset="1548">
+        <state line="7" column="6" selection-start="138" selection-end="138" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="252">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/client/templates/js/sidebar.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="6" selection-start="906" selection-end="906" vertical-scroll-proportion="0.43756905" vertical-offset="0" max-vertical-offset="905">
+        <state line="20" column="76" selection-start="863" selection-end="863" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="522">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/lib/mobi-router/MobiSequence.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="129" column="0" selection-start="3202" selection-end="3202" vertical-scroll-proportion="0.0" vertical-offset="2005" max-vertical-offset="2880">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/lib/mobi-router/MobiRoute.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="16" column="0" selection-start="327" selection-end="327" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2070">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/lib/mobi-router/lib/resizeable.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="7" column="11" selection-start="204" selection-end="204" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2034">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/lib/mobi-router/lib/iscroll.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1196" column="0" selection-start="36233" selection-end="36233" vertical-scroll-proportion="0.6367713" vertical-offset="20906" max-vertical-offset="21816" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/lib/mobi-router/mTemplates.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="60" column="2" selection-start="1441" selection-end="1441" vertical-scroll-proportion="0.0" vertical-offset="697" max-vertical-offset="2016">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/lib/mobi-router/MobiRouter.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="367" column="49" selection-start="10727" selection-end="10727" vertical-scroll-proportion="0.45515695" vertical-offset="6200" max-vertical-offset="12690">
           <folding />
         </state>
       </provider>
