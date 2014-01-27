@@ -1,7 +1,6 @@
 
 Template.sidebar.events({
     "click .menu_item_home, touch .menu_item_home" : function(e){
-        if( (new Date) - touchEventStarted < 1000 ) return false;
         MobiRouter.go('home', {second: 25, first: function(){return +(new Date);}});
         MobiRouter.hideSidebar();
     },

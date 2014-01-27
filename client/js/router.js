@@ -37,7 +37,7 @@ MobiRouter.map({
 MobiRouter.addSequence('signup', [
     {
         name: 'home',
-        data: function(){ return {first: this.params.first, second: this.params.second}; },
+        data: function(){ return {first: this.params.first+'sasdas', second: this.params.second}; },
     },
     {
         name: 'registration',
@@ -50,6 +50,7 @@ MobiRouter.addSequence('signup', [
 ]);
 
 MobiRouter.configure({
+    canISpeak: true,
     desktopWidth: 800,
     desktopHeight: 600,
     headerHeight: 45,
@@ -57,4 +58,6 @@ MobiRouter.configure({
     /*sidebarAutoOpenDesktop: true,*/
     sidebarDefaultWidth: 300,
     sidebarTemplate: 'sidebar',
+    notFoundTemplate: 'not_found',
+    notFoundTitle: '404, Page not found',
 });

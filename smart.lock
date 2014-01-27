@@ -1,0 +1,15 @@
+{
+  "meteor": {},
+  "dependencies": {
+    "basePackages": {
+      "Mobi-Router": {}
+    },
+    "packages": {
+      "Mobi-Router": {
+        "git": "https://github.com/Matheus90/mobi-router.git",
+        "tag": "v0.1.2",
+        "commit": "5111eff80d002b84d606593e402837826f51cb3b"
+      }
+    }
+  }
+}
