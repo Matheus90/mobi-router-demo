@@ -1,0 +1,22 @@
+
+<template name="test_breadcrumbs">
+    {{#each routes}}
+        {{#isolate}}
+        {{>breadcrumbs_part this}}
+        {{/isolate}}
+    {{/each}}
+</template>
+
+<template name="breadcrumbs_part">
+    <div class="breadcrumbs_part {{isActive}}">
+        <div class="arrow_right">&#187;</div>
+        <div class="route_name"><small>Route Name:</small> <b>{{name}}</b></div>
+        <div class="route_params">
+            Parameters: {
+            {{#each route_params}}
+                <div class="part_row"><span class="param_name">{{name}}</span>: <span class="param_value">{{value}}</span>,</div>
+            {{/each}}
+            }
+        </div>
+    </div>
+</template>

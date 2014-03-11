@@ -186,3 +186,58 @@ ul.menu > li > i.fa {
 .mobi_page > .scroller {
     background: rgba(0,0,0,0.2);
 }*/
+
+#test_breadcrums {
+    color: black;
+    width: 80%;
+    margin: 5px auto;
+    padding: 5px;
+    background: rgb(173, 201, 209);
+    min-height: 58px;
+    box-shadow: 1px 1px 8px 0 black;
+}
+
+.breadcrumbs_part {
+    vertical-align: top;
+    display: inline-block;
+    position: relative;
+    min-height: 90px;
+    padding: 5px 5px 5px 30px;
+    font-size: 12px;
+    background: white;
+    opacity: 0.7;
+}
+
+.breadcrumbs_part.active {
+    opacity: 1;
+}
+
+.breadcrumbs_part .arrow_right {
+    position: absolute;
+    left: 5px;
+    top: 5px;
+    width: 20px;
+    font-size: 20px;
+    line-height: 80px;
+    height: 80px;
+}
+
+.breadcrumbs_part .route_name {
+    font-size: 14px;
+}
+
+.breadcrumbs_part .route_params {
+    font-family: "Courier New", Courier, monospace;
+}
+
+.breadcrumbs_part .route_params .part_row{
+    padding-left: 10px;
+}
+
+.breadcrumbs_part .route_params .param_name{
+    color: blue;
+}
+.breadcrumbs_part .route_params .param_value{
+    color: orange;
+    font-weight: bold;
+}

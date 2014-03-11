@@ -1,0 +1,129 @@
+<template name="animals">
+    <div id="animals" class="type_{{type}}">
+        {{#if isMammal type}}
+            {{> mammals}}
+        {{/if}}
+
+        {{#if isBird type}}
+            {{> birds}}
+        {{/if}}
+
+        {{#if isReptile type}}
+            {{> reptiles}}
+        {{/if}}
+    </div>
+</template>
+
+
+<template name="mammals">
+    <h3>Big Mammals</h3>
+    <div class="tableview-sub">
+    {{#each bigAnimals}}
+        {{> mobi_tableview_link this}}
+    {{/each}}
+    </div>
+
+    <h3>Small Mammals</h3>
+    <div class="tableview-sub">
+    {{#each smallAnimals}}
+        {{> mobi_tableview_link this}}
+    {{/each}}
+    </div>
+</template>
+
+<template name="mammal_profile">
+    <div class="profile-container">
+        <div class="animal-icon" style="background-image: url('{{icon}}');"></div>
+
+        <div class="info-row">
+            <div class="property-name">Length</div>
+            <div class="data">{{{calcLength length}}}</div>
+        </div>
+
+        <div class="info-row">
+            <div class="property-name">Weight</div>
+            <div class="data">{{{calcWeight weight}}}</div>
+        </div>
+
+        <div class="info-row">
+            <div class="property-name">Size</div>
+            <div class="data">{{{mammalSize weight}}}</div>
+        </div>
+    </div>
+</template>
+
+
+<template name="birds">
+    <h3>Can Fly</h3>
+    <div class="tableview-sub">
+    {{#each canFly}}
+        {{> mobi_tableview_link this}}
+    {{/each}}
+    </div>
+
+    <h3>Can Not FLy</h3>
+    <div class="tableview-sub">
+    {{#each canNotFly}}
+        {{> mobi_tableview_link this}}
+    {{/each}}
+    </div>
+</template>
+
+<template name="bird_profile">
+    <div class="profile-container">
+        <div class="animal-icon" style="background-image: url('{{icon}}');"></div>
+
+        <div class="info-row">
+            <div class="property-name">Length</div>
+            <div class="data">{{{calcLength length}}}</div>
+        </div>
+
+        <div class="info-row">
+            <div class="property-name">Weight</div>
+            <div class="data">{{{calcWeight weight}}}</div>
+        </div>
+
+        <div class="info-row">
+            <div class="property-name">Can Fly? </div>
+            <div class="data">{{{boolYesNo canFly}}}</div>
+        </div>
+    </div>
+</template>
+
+
+<template name="reptiles">
+    <h3>Aquatic Reptiles</h3>
+    <div class="tableview-sub">
+    {{#each aquatics}}
+        {{> mobi_tableview_link this}}
+    {{/each}}
+    </div>
+
+    <h3>Non-Aquatic Reptiles</h3>
+    <div class="tableview-sub">
+    {{#each nonAquatics}}
+        {{> mobi_tableview_link this}}
+    {{/each}}
+    </div>
+</template>
+
+<template name="reptile_profile">
+    <div class="profile-container">
+        <div class="animal-icon" style="background-image: url('{{icon}}');"></div>
+
+        <div class="info-row">
+            <div class="property-name">Length</div>
+            <div class="data">{{{calcLength length}}}</div>
+        </div>
+
+        <div class="info-row">
+            <div class="property-name">Weight</div>
+            <div class="data">{{{calcWeight weight}}}</div>
+        </div>
+
+        <div class="info-row">
+            <div class="property-name">Can Swim? </div>
+            <div class="data">{{{boolYesNo aquatic}}}</div>
+        </div>
+    </div>
+</template>

@@ -1,5 +1,7 @@
 {
-  "meteor": {},
+  "meteor": {
+    "branch": "shark"
+  },
   "dependencies": {
     "basePackages": {
       "Mobi-Router": {}
@@ -7,8 +9,8 @@
     "packages": {
       "Mobi-Router": {
         "git": "https://github.com/Matheus90/mobi-router.git",
-        "tag": "v0.1.2",
-        "commit": "5111eff80d002b84d606593e402837826f51cb3b"
+        "tag": "v0.3.0",
+        "commit": "734318c5654fea37f8ae59b08f1fbafb8fffa20b"
       }
     }
   }
