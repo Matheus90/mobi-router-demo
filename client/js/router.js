@@ -4,26 +4,31 @@ MobiRouter.configure({
     canISpeak: true,
     desktopWidth: 800,
     desktopHeight: 600,
+    mobileWidth: 400,
     headerHeight: 45,
-    footerHeight: 45,
     sidebarToggleBtn: 45,
     sidebarDefaultWidth: 300,
     sidebarTemplate: 'sidebar',
     notFoundTemplate: 'not_found',
-    notFoundTitle: '404, Page not found',
+    notFoundTitle: '404, Page not found (custom title)',
+    loadingTemplate: 'loading',
     scrollTime: 750,
+});
+
+MobiRouter.setViewTypes({
+    TableView: 'mobi_tableview'
 });
 
 MobiRouter.map({
     'home': {
-        path: '/:first/:second/',
+        path: '/',
         defaultTitle: 'Home',
         template: 'home',
         data: function(){ return {first: this.params.first, fffsss: this.params.second}; },
     },
     'greeting': {
         path: '/greeting/:first/:last',
-        defaultTitle: 'Wellcome </b> {:last} {:first} </b>!',
+        defaultTitle: 'Wellcome <i> {:last} {:first} </i>!',
         template: 'hello',
         data: function(){ return {first: this.params.first, last: this.params.last}; },
         buttons: {backBtnText: 'Home'},
@@ -31,7 +36,7 @@ MobiRouter.map({
     'animals': {
         path: 'animals',
         defaultTitle: 'Animals',
-        type: 'tableview',
+        type: 'TableView',
         rows: [
             {
                 id: 'mammals-link',

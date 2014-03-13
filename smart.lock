@@ -9,8 +9,8 @@
     "packages": {
       "Mobi-Router": {
         "git": "https://github.com/Matheus90/mobi-router.git",
-        "tag": "v0.3.0",
-        "commit": "734318c5654fea37f8ae59b08f1fbafb8fffa20b"
+        "tag": "v0.3.3",
+        "commit": "14ed4e81286a1ded7cfff784e494213662d51f89"
       }
     }
   }
