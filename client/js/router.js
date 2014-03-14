@@ -36,7 +36,7 @@ MobiRouter.map({
     'animals': {
         path: 'animals',
         defaultTitle: 'Animals',
-        type: 'TableView',
+        routeType: 'TableView',
         rows: [
             {
                 id: 'mammals-link',
@@ -88,7 +88,7 @@ MobiRouter.map({
         template: 'animals',
         data: function(){ return {type: 'mammal'}; },
         buttons: {backBtnText: 'Animals'},
-        cssExtensions: {
+        classExtensions: {
             page: 'lightsteelblue-bg',
             header: 'orange-bg',
         },
