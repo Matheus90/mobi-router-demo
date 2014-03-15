@@ -21,7 +21,7 @@ MobiRouter.setViewTypes({
 
 MobiRouter.map({
     'home': {
-        path: '/:first/:second',
+        path: '/',
         defaultTitle: 'Home',
         template: 'home',
         data: function(){ return {first: this.params.first, fffsss: this.params.second}; },

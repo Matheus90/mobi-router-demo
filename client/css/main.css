@@ -241,3 +241,14 @@ ul.menu > li > i.fa {
     color: orange;
     font-weight: bold;
 }
+
+#loading_bg {
+    display: block;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background-image: url('/loading.gif');
+    background-size: 64px 64px;
+    background-repeat: no-repeat;
+    background-position: center;
+}
