@@ -11,7 +11,8 @@ MobiRouter.configure({
     sidebarTemplate: 'sidebar',
     notFoundTemplate: 'not_found',
     notFoundTitle: '404, Page not found (custom title)',
-    loadingTemplate: 'loading',
+    loadingTemplate: true, //'loading',
+    minLoadingTemplateTime: 3000,
     scrollTime: 750,
 });
 
