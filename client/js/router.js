@@ -2,6 +2,7 @@
 
 MobiRouter.configure({
     canISpeak: true,
+    defaultTitle: 'Mobi-Router Demo Site',
     desktopWidth: 800,
     desktopHeight: 600,
     mobileWidth: 400,
@@ -13,7 +14,8 @@ MobiRouter.configure({
     notFoundTitle: '404, Page not found (custom title)',
     loadingTemplate: true, //'loading',
     minLoadingTemplateTime: 3000,
-    scrollTime: 750,
+    scrollTime: 1000,
+    useTouchEvents: true,
 });
 
 MobiRouter.setViewTypes({
@@ -22,7 +24,7 @@ MobiRouter.setViewTypes({
 
 MobiRouter.map({
     'home': {
-        path: '/',
+        path: '/:first',
         defaultTitle: 'Home',
         template: 'home',
         data: function(){ return {first: this.params.first, fffsss: this.params.second}; },

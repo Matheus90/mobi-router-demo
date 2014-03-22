@@ -11,7 +11,7 @@ Template.home.helpers({
 });
 
 Template.home.events({
-    'click #go_greeting': function(){
+    'mouseup #go_greeting, touchend #go_greeting': function(){
         return MobiRouter.go('greeting', {}, true);
     }
 });
