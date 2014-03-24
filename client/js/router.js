@@ -7,6 +7,8 @@ MobiRouter.configure({
     desktopHeight: 600,
     mobileWidth: 400,
     headerHeight: 45,
+    sidebarMoveTime: 300,
+    sidebarMoveEasing: 'easeOutExpo',
     sidebarToggleBtn: 45,
     sidebarDefaultWidth: 300,
     sidebarTemplate: 'sidebar',
@@ -14,8 +16,8 @@ MobiRouter.configure({
     notFoundTitle: '404, Page not found (custom title)',
     loadingTemplate: true, //'loading',
     minLoadingTemplateTime: 3000,
-    scrollTime: 1000,
-    useTouchEvents: true,
+    pageMoveTime: 600,
+    pageMoveEasing: 'easeInOutQuart',
 });
 
 MobiRouter.setViewTypes({
